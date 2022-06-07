@@ -4,7 +4,6 @@ filetype off
 call plug#begin()
 
 Plug 'Lokaltog/vim-easymotion'
-Plug 'Lokaltog/vim-powerline'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bogado/file-line'
@@ -32,7 +31,6 @@ Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
@@ -42,7 +40,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tsaleh/vim-tmux'
 Plug 'vim-scripts/Gummybears'
-Plug 'vim-scripts/UltiSnips'
 Plug 'vim-scripts/nerdtree-ack'
 Plug 'vim-scripts/utl.vim'
 Plug 'wavded/vim-stylus'
@@ -110,9 +107,12 @@ Plug 'dgryski/vim-godef'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 
+Plug 'ianva/vim-youdao-translater'
+
 call plug#end()
 
 syntax enable                       " enable syntax highlighting
+set termencoding=utf8
 set encoding=utf8                   " utf8 default encoding
 
 filetype plugin indent on
@@ -326,9 +326,6 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
-
 " Ack
 set grepprg=ack
 nnoremap <leader>a :Ack<space>
@@ -415,7 +412,7 @@ if exists('+colorcolumn')
   hi ColorColumn ctermbg=234 guibg=#1c1c1c
 endif
 
-let NERDTreeMapOpenInTab='\t'
+" let NERDTreeMapOpenInTab='\t'
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -474,9 +471,9 @@ let g:godef_split=2
 " 打开和关闭NERDTree快捷键
 map <F10> :NERDTreeToggle<CR>
 " 显示行号
-let NERDTreeShowLineNumbers=1
+let NERDTreeShowLineNumbers=0
 " 打开文件时是否显示目录
-let NERDTreeAutoCenter=1
+let NERDTreeAutoCenter=0
 " 是否显示隐藏文件
 let NERDTreeShowHidden=0
 " 设置宽度
@@ -542,3 +539,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 
 let g:NERDTreeGitStatusShowIgnored = 1
+
+" youdao translate
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
